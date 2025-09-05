@@ -10,6 +10,7 @@ import { AddPanchayathForm } from "@/components/AddPanchayathForm";
 import { useAuth } from "@/components/AuthProvider";
 import LoginForm from "@/components/LoginForm";
 import { AdminApprovalPanel } from "@/components/AdminApprovalPanel";
+import { AdminTeamAdmin } from "@/components/AdminTeamAdmin";
 
 const AdminPanelContent = () => {
   const { user, logout } = useAuth();
@@ -50,10 +51,14 @@ const AdminPanelContent = () => {
         <Card>
           <CardContent className="p-6">
             <Tabs defaultValue="teams" className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="teams" className="flex items-center gap-2">
                   <Users className="h-4 w-4" />
                   Management Teams
+                </TabsTrigger>
+                <TabsTrigger value="admin-teams" className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  Admin Teams
                 </TabsTrigger>
                 <TabsTrigger value="panchayaths" className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
@@ -71,6 +76,10 @@ const AdminPanelContent = () => {
               
               <TabsContent value="teams" className="mt-6">
                 <ManagementTeamAdmin />
+              </TabsContent>
+              
+              <TabsContent value="admin-teams" className="mt-6">
+                <AdminTeamAdmin />
               </TabsContent>
               
               <TabsContent value="panchayaths" className="mt-6">
